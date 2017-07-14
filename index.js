@@ -69,6 +69,9 @@ BitField.prototype.equals = function(other){
 
 BitField.prototype.setValues = function(values, value) {
     var ii,len;
+    if( values === undefined || values === null ){
+        return this;
+    }
     this.all = false;
     for( ii=0,len=values.length;ii<len;ii++ ){
         this.set( values[ii], value );
@@ -115,7 +118,7 @@ BitField.prototype.get = function(i, values){
 *   if equals is passed the result is (a&b) == a
 */
 BitField.prototype.and = function( result, other, equals ){
-    var i,l, out, values, ovalues, evalues, eq;
+    var ii,len, out, values, ovalues, evalues, eq;
     if( this.all || other.all ){
         return true;
     }
@@ -124,13 +127,13 @@ BitField.prototype.and = function( result, other, equals ){
     ovalues = other.values;
     evalues = equals ? equals.values : null;
     eq = true;
-    for (i=0,l=values.length;i<l; i++) {
-        out[i] = (values[i] & ovalues[i]);
+    for (ii=0,len=values.length;ii<len; ii++) {
+        out[ii] = (values[ii] & ovalues[ii]);
         if( equals && eq ){ 
-            eq = (out[i] === evalues[i]);
+            eq = (out[ii] === evalues[ii]);
         }
         else if( eq ){
-            eq = (out[i] === 0);
+            eq = (out[ii] === 0);
         }
     }
     if( equals ){
@@ -141,6 +144,30 @@ BitField.prototype.and = function( result, other, equals ){
     }
     return !eq;
 };
+
+
+/**
+ * Returns the values in <other> which are not present in <this>
+ * If result is passed, the result is placed in that
+ */
+BitField.prototype.difference = function( result, other ){
+    var ii,len,values,ovalues;
+    result = result || new BitField();
+    
+    values = this.toArray();
+    ovalues = other.toArray();
+
+    for(ii=0,len=values.length;ii<len;ii++){
+        // console.log('consider this', ii, values[ii] );
+        // console.log('consider that', ii, ovalues[ii] );
+        if( ovalues[ii] === true && values[ii] === false ){
+            result.set( values.length-ii-1, true );
+        }
+    }
+
+    return result;
+}
+
 
 BitField.prototype.toValues = function( values ){
     var ii,len,result = [];

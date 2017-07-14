@@ -187,6 +187,20 @@ test('bitfield', function(t){
         t.end();
     });
 
+    test('difference between two bitfields', t => {
+        const a = new BitField();
+        const b = new BitField();
+
+        a.setValues( [4,6,8,12], true ); // 1000101010000
+        b.setValues( [2,6,8,12], true ); // 1000101000100
+
+        // returns the values that are set in b but not in a
+        const c = a.difference( null, b );
+        t.deepEqual( c.toJSON(), [2] );
+
+        t.end();
+    })
+
     test('equality', function(t){
         var a = new BitField(),
             b = new BitField();
@@ -245,6 +259,12 @@ test('bitfield', function(t){
         t.notOk( a.get(129) );
         t.end();
     });
+
+    test('null setValues', function(t){
+        var a = BitField.create();
+        a.setValues( null, true );
+        t.end();
+    })
 
     test('toValues', function(t){
         var a = BitField.create();
