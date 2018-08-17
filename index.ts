@@ -174,9 +174,7 @@ export class BitField {
     }
 
     /**
-     * 
-     * @param a 
-     * @param b 
+     * Bitwise AND - returns false if one bit is true when the other is false
      */
     static and(a : BitField, b : BitField ) : boolean {
         // return a.and(null, b);
@@ -203,7 +201,11 @@ export class BitField {
         return true;
     };
 
-    static aand(a : BitField, b : BitField) : boolean{
+    /**
+     * Bitwise OR - returns true if any matching bits are true
+     * (previously aand)
+     */
+    static or(a : BitField, b : BitField) : boolean{
         
         if (a.isAllSet && b.isAllSet) {
             return true;
@@ -221,7 +223,7 @@ export class BitField {
             //     continue;
             // if( d ){ console.log( i + ' bfOR ' + values[i] + ' ' + ovalues[i] + ' ' + (values[i] & ovalues[i]) ); }
             if ((values[ii] & ovalues[ii]) !== 0) {
-                result = true;
+                return true;
             }
         }
     
@@ -229,6 +231,9 @@ export class BitField {
     };
 
 
+    /**
+     * Bitwise NOR
+     */
     static nor(a : BitField, b : BitField) : boolean {
         if (a.isAllSet || b.isAllSet) {
             return false;
@@ -254,33 +259,33 @@ export class BitField {
      *
      *   if equals is passed the result is (a&b) == a
      */
-    and(result: BitField | null, other: BitField, equals?: BitField) : boolean | BitField {
-        if (this.isAllSet || other.isAllSet) {
-            return true;
-        }
+    // and(result: BitField | null, other: BitField, equals?: BitField) : boolean | BitField {
+    //     if (this.isAllSet || other.isAllSet) {
+    //         return true;
+    //     }
 
-        let out: Array<number> = result ? result.values : [];
-        let values: Array<number> = this.values;
-        let ovalues: Array<number> = other.values;
-        let evalues: Array<number> = equals ? equals.values : [];
-        let eq = true;
+    //     let out: Array<number> = result ? result.values : [];
+    //     let values: Array<number> = this.values;
+    //     let ovalues: Array<number> = other.values;
+    //     let evalues: Array<number> = equals ? equals.values : [];
+    //     let eq = true;
 
-        for (let ii = 0, len = values.length; ii < len; ii++) {
-            out[ii] = values[ii] & ovalues[ii];
-            if (equals && eq) {
-                eq = out[ii] === evalues[ii];
-            } else if (eq) {
-                eq = out[ii] === 0;
-            }
-        }
-        if (equals) {
-            return eq;
-        }
-        if (result) {
-            return result;
-        }
-        return !eq;
-    }
+    //     for (let ii = 0, len = values.length; ii < len; ii++) {
+    //         out[ii] = values[ii] & ovalues[ii];
+    //         if (equals && eq) {
+    //             eq = out[ii] === evalues[ii];
+    //         } else if (eq) {
+    //             eq = out[ii] === 0;
+    //         }
+    //     }
+    //     if (equals) {
+    //         return eq;
+    //     }
+    //     if (result) {
+    //         return result;
+    //     }
+    //     return !eq;
+    // }
 
     /**
      * Returns the values in <other> which are not present in <this>
