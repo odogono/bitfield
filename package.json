@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "a javascript bitfield implementation",
   "main": "dist/index.js",
+  "module": "dist/index.m.js",
   "typings": "dist/index.d.ts",
   "umd:main": "dist/index.umd.js",
   "scripts": {

@@ -137,32 +137,32 @@ describe('BitField', () => {
         expect(nor('1000', 'all')).toBeFalsy();
     });
 
-    it.skip('should logically AND and return value indicating difference', () => {
-        // let a = new BitField(),
-        //     b = new BitField();
+    it('should logically AND and return value indicating difference', () => {
+        let a = new BitField(),
+            b = new BitField();
 
-        // a.set(4, true);
-        // a.set(6, true);
+        a.set(4, true);
+        a.set(6, true);
 
-        // expect(a.and(null, b)).toEqual(false);
-        // expect(a.and(null, b, a)).toEqual(false);
+        expect(a.and(null, b)).toEqual(false);
+        expect(a.and(null, b, a)).toEqual(false);
 
-        // b.set(4, true);
-        // b.set(6, true);
-        // b.set(8, true);
+        b.set(4, true);
+        b.set(6, true);
+        b.set(8, true);
 
-        // // returns true because of a match
-        // expect(a.and(null, b)).toEqual(true);
+        // returns true because of a match
+        expect(a.and(null, b)).toEqual(true);
 
-        // b.set(4, false);
-        // // log.debug( a.toString() + ' ' + b.toString() );
-        // // 001010000
-        // // 101000000
-        // // true because a&b == 0
+        b.set(4, false);
+        // log.debug( a.toString() + ' ' + b.toString() );
+        // 001010000
+        // 101000000
+        // true because a&b == 0
 
-        // expect(a.and(null, b)).toEqual(true);
-        // // false because a&b != a
-        // expect(a.and(null, b, a)).toEqual(false);
+        expect(a.and(null, b)).toEqual(true);
+        // false because a&b != a
+        expect(a.and(null, b, a)).toEqual(false);
     });
 
     it('difference between two bitfields', () => {
