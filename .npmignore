@@ -13,6 +13,11 @@ lib-cov
 pids
 logs
 results
+test
+src
 
 node_modules
 npm-debug.log
+.rpt2_cache
+.vscode
+package-lock.json

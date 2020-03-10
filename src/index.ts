@@ -392,6 +392,8 @@ export class BitField {
         if (this.values.length === 0) {
             return '0';
         }
+
+        
         return this.toArray(values)
             .map(value => (value ? '1' : '0'))
             .join('');

@@ -1,4 +1,4 @@
-import { BitField } from './index';
+import { BitField } from '../src/index';
 
 describe('BitField', () => {
     it('getting', () => {

@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "module": "commonjs",
+        "module": "ES2015",
         "target": "es5",
         "declaration": true,
         "outDir": "dist",
@@ -8,5 +8,5 @@
         "sourceMap": true,
         "lib": ["es5"]
     },
-    "include": ["index.ts"]
+    "include": ["src/index.ts"]
 }
