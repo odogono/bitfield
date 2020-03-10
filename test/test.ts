@@ -61,7 +61,7 @@ describe('BitField', () => {
     });
 
     it('should AND BitField instances', () => {
-        const expectAnd = (a, b) =>
+        const expectAnd = (a:string, b:string) =>
             expect(BitField.and(BitField.create(a), BitField.create(b)));
 
         expectAnd('1000', '1000').toBe(true);
@@ -97,7 +97,7 @@ describe('BitField', () => {
     });
 
     it('should bitwise OR ', () => {
-        const expectOr = (a, b) =>
+        const expectOr = (a:string, b:string) =>
             expect(BitField.or(BitField.create(a), BitField.create(b)));
 
         expectOr('1000', '1000').toBe(true);
@@ -125,7 +125,7 @@ describe('BitField', () => {
     });
 
     it('NOR', () => {
-        const nor = (a, b) =>
+        const nor = (a:string, b:string) =>
             BitField.nor(BitField.create(a), BitField.create(b));
 
         expect(nor('all', '0')).toEqual(false);

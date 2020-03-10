@@ -3,6 +3,7 @@
         "module": "ES2015",
         "target": "es5",
         "declaration": true,
+        "declarationDir": "dist",
         "outDir": "dist",
         "strict": true,
         "sourceMap": true,

@@ -26,25 +26,6 @@ export class BitField {
         }
         
         this.set( values, true );
-
-        // } else if (Array.isArray(values)) {
-        //     this.setValues(values, true);
-        // } else if( BitField.isBitField(values) ){
-        //     this.set( (<BitField>values) );
-        // } else if (typeof values === 'string') {
-        //     if (values === 'all') {
-        //         this.isAllSet = true;
-        //     } else {
-        //         let parts: string[] = values.split('');
-        //         for (
-        //             let ii = parts.length - 1, len = parts.length - 1;
-        //             ii >= 0;
-        //             ii--
-        //         ) {
-        //             this.set(len - ii, parts[ii] === '1');
-        //         }
-        //     }
-        // }
     }
 
     /**
@@ -131,7 +112,7 @@ export class BitField {
     /**
      * Sets the given positions to the specified value which defaults to true
      */
-    setValues(values: Array<number>, value: boolean = true) {
+    setValues(values: Array<number>|null, value: boolean = true) {
         this.isAllSet = false;
         if( values === null ){
             this.isAllSet = value;

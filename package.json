@@ -1,6 +1,6 @@
 {
   "name": "odgn-bitfield",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "a javascript bitfield implementation",
   "main": "dist/index.js",
   "module": "dist/index.m.js",
@@ -8,8 +8,7 @@
   "umd:main": "dist/index.umd.js",
   "scripts": {
     "prepublishOnly": "npm run build",
-    "start": "microbundle watch",
-    "build": "microbundle",
+    "build": "rollup -c rollup.config.js",
     "test": "jest"
   },
   "repository": {
@@ -26,11 +25,11 @@
   },
   "homepage": "https://github.com/odogono/bitfield#readme",
   "devDependencies": {
-    "microbundle": "^0.6.0",
-    "@types/jest": "^23.3.1",
-    "jest": "^23.5.0",
-    "ts-jest": "^23.1.4",
-    "typescript": "^3.0.1"
+    "@types/jest": "^25.1.4",
+    "jest": "^25.1.0",
+    "rollup-plugin-typescript2": "^0.26.0",
+    "ts-jest": "^25.2.1",
+    "typescript": "^3.8.3"
   },
   "jest": {
     "transform": {
